@@ -12,8 +12,11 @@ export const Heading = styled.h1`
  font-size:36px;
  color:#ffff;
  font-family:'Roboto';
+ @media screen and (max-width: 576px){
+    font-size:24px;
+ }
 `
-export const InputContainer=styled.div`
+export const InputContainer = styled.div`
     display:flex;
     margin-top:20px;
    justify-content:space-around;
@@ -21,12 +24,12 @@ export const InputContainer=styled.div`
     width:70%;
     margin-bottom:20px;
 `
-export const Input=styled.input`
+export const Input = styled.input`
    height:40px;
    margin-bottom:20px;
 `
 
-export const UnitContainer=styled.div`
+export const UnitContainer = styled.div`
     display:flex;
     justify-content:flex-end;
     width:70%;
@@ -39,12 +42,18 @@ export const DetailsContainer = styled.div`
     margin-top:40px;
     display:flex;
     justify-content:space-between;
+    @media screen and (max-width: 576px){
+        margin-top:20px;
+     }
 `
 
 export const Detail = styled.div`
    color:#ffff;
    font-size:24px;
    margin-bottom:20px;
+   @media screen and (max-width: 576px){
+    font-size:16px;
+ }
 `
 
 export const LoaderSpinnerContainer = styled.div`
@@ -54,6 +63,6 @@ export const LoaderSpinnerContainer = styled.div`
  align-items:center;
 `
 
-export const Failure=styled.h1`
+export const Failure = styled.h1`
 color:#ff7300;
 `

@@ -1,4 +1,3 @@
-
 import './App.css';
 import PolutionData from './components/PolutionData';
 
