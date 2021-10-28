@@ -34,7 +34,10 @@ export const UnitContainer = styled.div`
     justify-content:flex-end;
     width:70%;
 `
-
+export const ChartContainer = styled.div`
+   height:500px;
+   width:70%;
+`
 export const DetailsContainer = styled.div`
     border:5px solid #ffff;
     padding:30px;

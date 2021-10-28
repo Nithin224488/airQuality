@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
-import { LineChart, XAxis, Tooltip, CartesianGrid, Line } from 'recharts'
+import { LineChart, XAxis, Tooltip, CartesianGrid, Line, ResponsiveContainer, Legend, YAxis } from 'recharts'
+
 import { format } from 'date-fns'
 import Loader from 'react-loader-spinner'
 
-import { PolutionDataContainer, Heading, InputContainer, Input, UnitContainer, DetailsContainer, Detail, LoaderSpinnerContainer ,Failure} from './styledComponents'
+import { PolutionDataContainer, Heading,ChartContainer, InputContainer, Input, UnitContainer, DetailsContainer, Detail, LoaderSpinnerContainer, Failure } from './styledComponents'
 
 const apiStatusConstants = {
     initial: 'INITIAL',
@@ -80,18 +81,28 @@ const PolutionData = () => {
                 <UnitContainer>
                     <Detail>Unit : {unit}</Detail>
                 </UnitContainer>
-                <LineChart
-                    width={1200}
-                    height={400}
-                    data={polutionData}
-                    margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
-                >
-                    <XAxis dataKey="time" />
-                    <Tooltip />
-                    <CartesianGrid stroke="#f5f5f5" />
-                    <Line type="monotone" dataKey="value" stroke="#ff7300" yAxisId={0} />
-                </LineChart>
-
+                <ChartContainer >
+                <ResponsiveContainer width="100%" height="100%">
+                    <LineChart
+                        width={500}
+                        height={300}
+                        data={polutionData}
+                        margin={{
+                            top: 5,
+                            right: 30,
+                            left: 20,
+                            bottom: 5,
+                        }}
+                    >
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="time" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <Line type="monotone" dataKey="value" stroke="#ff7300" yAxisId={0} />
+                    </LineChart>
+                </ResponsiveContainer>
+                </ChartContainer>
                 <DetailsContainer>
                     <div>
                         <Detail>Country : {country}</Detail>
@@ -136,11 +147,11 @@ const PolutionData = () => {
             <InputContainer>
                 <div>
                     <Detail>To Date :</Detail>
-                    <Input type="date" onChange={onChangeToDate} />
+                    <Input type="date" onChange={onChangeToDate} value={toDate} />
                 </div>
                 <div>
                     <Detail>Limit : </Detail>
-                    <Input type="number" onKeyDown={onChangeLimit} />
+                    <Input type="number" onKeyDown={onChangeLimit} defaultValue={limit} />
                 </div>
             </InputContainer>
             {renderAirQualityData()}
